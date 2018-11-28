@@ -567,7 +567,7 @@ class HtmlDiff extends AbstractDiff
                     }
                 }
             }
-            if (count($words) == 0 && count($specialCaseTagInjection) == 0) {
+            if (count($words) == 0 && mb_strlen($specialCaseTagInjection) == 0) {
                 break;
             }
             if ($specialCaseTagInjectionIsBefore) {
@@ -716,7 +716,7 @@ class HtmlDiff extends AbstractDiff
                 $operations[] = new Operation($action, $positionInOld, $match->startInOld, $positionInNew, $match->startInNew);
             }
 
-            if (count($match) !== 0) {
+            if ($match) {
                 $operations[] = new Operation('equal', $match->startInOld, $match->endInOld(), $match->startInNew, $match->endInNew());
             }
 
